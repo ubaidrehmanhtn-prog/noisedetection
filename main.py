@@ -1,0 +1,15 @@
+OLED.init(64, 128)
+RTC_DS1307.set_time(RTC_DS1307.TimeType.HOUR, 14)
+RTC_DS1307.set_time(RTC_DS1307.TimeType.MINUTE, 15)
+RTC_DS1307.set_time(RTC_DS1307.TimeType.SECOND, 0)
+
+def on_forever():
+    OLED.clear()
+    OLED.write_num(0)
+    OLED.write_string("")
+    OLED.write_num(0)
+    OLED.new_line()
+    OLED.write_string("Noise:")
+    OLED.write_num(Environment.read_noise(AnalogPin.P1))
+    basic.pause(1000)
+basic.forever(on_forever)
